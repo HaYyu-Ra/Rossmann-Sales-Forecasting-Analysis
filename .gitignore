@@ -1,0 +1,88 @@
+# Ignore Python virtual environment
+.venv/
+new_env/
+
+# Ignore compressed files
+*.zip
+*.compressed
+*.tar.gz
+*.tar.bz2
+*.7z
+*.rar
+
+# Ignore pickle files
+*.pkl
+
+# Ignore CSV files
+*.csv
+
+# Ignore large files
+*.dll
+*.pyd
+*.exe
+*.iso
+*.bin
+*.log
+*.mp4
+*.mkv
+*.avi
+*.mov
+*.wav
+*.mp3
+*.iso
+*.tar
+*.gz
+*.bz2
+*.xz
+
+# Ignore DVC files
+*.dvc/
+*.dvcignore
+
+# Ignore images and large media files
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.tiff
+*.bmp
+*.svg
+*.ico
+*.psd
+
+# Ignore database files
+*.sqlite
+*.db
+*.db3
+
+# Ignore Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Ignore Mac OS metadata
+.DS_Store
+
+# Ignore Windows thumbnail cache
+Thumbs.db
+
+# Ignore temporary files
+*.tmp
+*.swp
+*.swo
+*.bak
+*.backup
+
+# Ignore Python bytecode
+*.pyc
+*.pyo
+__pycache__/
+
+# Ignore configuration files
+*.config
+*.cfg
+*.ini
+
+# Ignore IDE project files
+*.idea/
+*.vscode/
+*.sublime-project
+*.sublime-workspace
