@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rossmann Sales Forecasting</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 2em;
+            line-height: 1.6;
+        }
+        h1 {
+            color: #4CAF50;
+        }
+        h2 {
+            margin-top: 2em;
+            color: #333;
+        }
+        form {
+            margin-top: 1.5em;
+            border: 1px solid #ddd;
+            padding: 1em;
+            border-radius: 5px;
+        }
+        label {
+            font-weight: bold;
+        }
+        textarea {
+            width: 100%;
+            height: 120px;
+            padding: 10px;
+            margin-top: 0.5em;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            margin-top: 10px;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        #lstmResult, #rfResult {
+            margin-top: 1em;
+            padding: 1em;
+            background-color: #f4f4f4;
+            border-radius: 5px;
+            font-family: 'Courier New', Courier, monospace;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        .error {
+            color: red;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Rossmann Sales Forecasting</h1>
+    <p>Use the forms below to test the API endpoints:</p>
+
+    <h2>LSTM Prediction</h2>
+    <form id="lstmForm">
+        <label for="lstmInput">Input Data (JSON format):</label><br>
+        <textarea id="lstmInput">{"input": [10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150, 160, 170, 180, 190, 200, 210, 220, 230, 240, 250, 260, 270, 280, 290, 300]}</textarea><br>
+        <button type="button" onclick="submitLSTM()">Predict</button>
+    </form>
+    <div id="lstmResult"></div>
+
+    <h2>Random Forest Prediction</h2>
+    <form id="rfForm">
+        <label for="rfInput">Input Data (JSON format):</label><br>
+        <textarea id="rfInput">{"input": [[1, 2, 3, 4, 5], [6, 7, 8, 9, 10], [11, 12, 13, 14, 15]]}</textarea><br>
+        <button type="button" onclick="submitRF()">Predict</button>
+    </form>
+    <div id="rfResult"></div>
+
+    <script>
+        // Function to submit LSTM prediction
+        async function submitLSTM() {
+            const input = document.getElementById('lstmInput').value;
+            try {
+                const response = await fetch('/predict/lstm', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: input
+                });
+                const result = await response.json();
+                document.getElementById('lstmResult').innerText = JSON.stringify(result, null, 2);
+            } catch (error) {
+                document.getElementById('lstmResult').innerText = `Error: ${error.message}`;
+            }
+        }
+
+        // Function to submit Random Forest prediction
+        async function submitRF() {
+            const input = document.getElementById('rfInput').value;
+            try {
+                const response = await fetch('/predict/rf', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: input
+                });
+                const result = await response.json();
+                document.getElementById('rfResult').innerText = JSON.stringify(result, null, 2);
+            } catch (error) {
+                document.getElementById('rfResult').innerText = `Error: ${error.message}`;
+            }
+        }
+    </script>
+</body>
+</html>
