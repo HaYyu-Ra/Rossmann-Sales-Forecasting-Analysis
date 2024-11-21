@@ -81,7 +81,7 @@ Installation
 
     bash
 
-git clone https://github.com/HaYyu-Ra/Rossman_sales_analysis.git
+git clone https://github.com/HaYyu-Ra/Rossmann-Sales-Forecasting-Analysis
 cd Rossman_sales_analysis
 
 Install the dependencies: Make sure you have pip installed, and then run:
